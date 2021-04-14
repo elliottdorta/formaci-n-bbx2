@@ -5,10 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -23,4 +21,7 @@ public class Vendor {
     private String name;
     private String country;
     private String description;
+
+    @ManyToMany(mappedBy = "vendor")
+    private List<Article> article;
 }

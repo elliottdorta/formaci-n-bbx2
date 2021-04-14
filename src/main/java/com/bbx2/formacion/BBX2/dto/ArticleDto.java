@@ -1,6 +1,9 @@
 package com.bbx2.formacion.BBX2.dto;
 
-public class ArticleDTO {
+import lombok.Data;
+
+@Data
+public class ArticleDto {
     private Long idarticle;
     private String description;
     private float price;

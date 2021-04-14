@@ -1,7 +1,7 @@
 INSERT INTO USER
 (dni,name,surname,rol,password,dateup) VALUES
-('54108407X','ELLIOTT','DORTA','ADMIN','prueba','2021-04-07'),
-('00000000X','JOSELITO','JUNIOR','WORKER','prueba','2021-04-07');
+('54108407X','ELLIOTT','DORTA','ADMIN','prueba','2021-04-09'),
+('00000000X','JOSELITO','JUNIOR','WORKER','prueba','2021-04-09');
 
 
 INSERT INTO ARTICLE
@@ -13,7 +13,7 @@ INSERT INTO ARTICLE
 
 INSERT INTO PRICE_REDUCTION
 (creator,reducedprice,datestart,dateend) VALUES
-('Elliott',15.25,'2021-04-07','2021-04-17'),
+('Elliott',15.25,'2021-04-09','2021-04-17'),
 ('Elliott',150,'2021-04-10','2021-10-01');
 
 

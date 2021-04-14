@@ -1,20 +1,15 @@
 package com.bbx2.formacion.BBX2.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.bbx2.formacion.BBX2.dto.VendorDto;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.Date;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 public class Article {
 
@@ -26,5 +21,21 @@ public class Article {
     private String status;
     private String creator;
     private String usermod;
+
+    @JoinTable(
+            name = "rel_article_vendors",
+            joinColumns = @JoinColumn(name = "FK_ARTICLE", nullable = false),
+            inverseJoinColumns = @JoinColumn(name ="FK_VENDOR", nullable = false)
+    )
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Vendor> vendors;
+
+    public void addVendor(Vendor vendor){
+        if(this.vendors == null){
+            this.vendors = new ArrayList<>();
+        }
+
+        this.vendors.add(vendor);
+    }
 
 }

@@ -1,14 +1,10 @@
 package com.bbx2.formacion.BBX2.controller;
 
 import com.bbx2.formacion.BBX2.dto.UserDto;
-import com.bbx2.formacion.BBX2.models.User;
 import com.bbx2.formacion.BBX2.service.IUserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 
@@ -17,8 +13,7 @@ import java.util.List;
 @RequestMapping("/api")
 public class UserController {
 
-    @Autowired
-    private ModelMapper modelMapper;
+
 
     private IUserService iUserService;
 
@@ -27,14 +22,33 @@ public class UserController {
         this.iUserService= iUserService;
     }
 
+    @GetMapping("/users")
+    public List<UserDto> getAllUsers(){
+        return iUserService.getAllUsers();
+    }
+
+
+    @PostMapping("/users")
+    public UserDto createUser(@RequestBody UserDto userDto){
+
+        return iUserService.createUser(userDto);
+    }
+
+    @PutMapping("/users")
+    public UserDto updateUser(@RequestBody UserDto userDto){
+
+        return iUserService.createUser(userDto);
+    }
+
     @GetMapping("/users/{id}")
     public UserDto getPostById(@PathVariable(name = "id") Long id) {
-        User post = iUserService.getUserById(id);
 
-        // convert entity to DTO
-        UserDto postResponse = modelMapper.map(post, UserDto.class);
+        return iUserService.getUserById(id);
+    }
 
-        return postResponse;
+    @DeleteMapping("/users/{id}")
+    public void deleteUser(@PathVariable(name = "id") Long id) {
+        iUserService.deleteUser(id);
     }
 
 
