@@ -5,7 +5,9 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -22,20 +24,9 @@ public class Article {
     private String creator;
     private String usermod;
 
-    @JoinTable(
-            name = "rel_article_vendors",
-            joinColumns = @JoinColumn(name = "FK_ARTICLE", nullable = false),
-            inverseJoinColumns = @JoinColumn(name ="FK_VENDOR", nullable = false)
-    )
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<Vendor> vendors;
 
-    public void addVendor(Vendor vendor){
-        if(this.vendors == null){
-            this.vendors = new ArrayList<>();
-        }
 
-        this.vendors.add(vendor);
-    }
+
+
 
 }

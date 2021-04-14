@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -22,6 +24,5 @@ public class Vendor {
     private String country;
     private String description;
 
-    @ManyToMany(mappedBy = "vendor")
-    private List<Article> article;
+
 }
