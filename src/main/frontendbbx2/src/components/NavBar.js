@@ -1,40 +1,21 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import {Navbar,Nav} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-}));
 
-export default function ButtonAppBar() {
-  const classes = useStyles();
 
+export default function NavBar() {
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            News
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
+    <div>
+        <Navbar bg="light" expand="lg">
+          <Link to={""} className="navbar-brand">
+            <Navbar.Brand href="">Formación BBX2</Navbar.Brand>
+          </Link>
+          <Nav classname="mr-auto">
+            <Link to={"addArticle"} className="navbar-brand">Article</Link>
+            <Link to={"listArticle"} className="navbar-brand">ArticleList</Link>
+          </Nav>
+        </Navbar>
     </div>
-  );
+  )
 }

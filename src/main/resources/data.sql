@@ -5,11 +5,11 @@ INSERT INTO USER
 
 
 INSERT INTO ARTICLE
-(description,price,status,creator,usermod) VALUES
-('Armario',25.75,'ACTIVE','Elliott',null),
-('Lampara',45.26,'ACTIVE','Elliott',null),
-('Sillon',625.75,'ACTIVE','Elliott',null),
-('Mesa',5.75,'INACTIVE','Elliott',null);
+(description,price,status,creator,usermod,dateup) VALUES
+('Armario',25.75,'ACTIVE','Elliott',null,'2021-04-17'),
+('Lampara',45.26,'ACTIVE','Elliott',null,'2021-04-17'),
+('Sillon',625.75,'ACTIVE','Elliott',null,'2021-04-17'),
+('Mesa',5.75,'INACTIVE','Elliott',null,'2021-04-17');
 
 INSERT INTO PRICE_REDUCTION
 (creator,reducedprice,datestart,dateend) VALUES
@@ -21,3 +21,7 @@ INSERT INTO VENDOR
 (name,country,description) VALUES
 ('Madera','Spain','Proveedor de madera'),
 ('Bombillas','Japon','Bombillas led');
+
+INSERT INTO ARTICLE_VENDOR VALUES
+(1,1),
+(2,1);

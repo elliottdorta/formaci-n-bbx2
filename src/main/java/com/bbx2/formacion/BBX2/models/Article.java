@@ -23,6 +23,17 @@ public class Article {
     private String status;
     private String creator;
     private String usermod;
+    private String dateup;
+
+
+    @ManyToMany
+    @JoinTable(
+            name="article_vendor",
+            joinColumns = @JoinColumn(name="idarticle"),
+            inverseJoinColumns = @JoinColumn(name="idvendor")
+    )
+    private Set<Vendor> vendors;
+
 
 
 
