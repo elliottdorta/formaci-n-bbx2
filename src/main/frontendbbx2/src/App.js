@@ -8,6 +8,10 @@ import Footer from './components/Footer';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ArticleList from './components/ArticleList';
 import Article from './components/Article';
+import Login from './components/Login';
+import Register from './components/Register';
+
+
 
 function App() {
   
@@ -26,6 +30,8 @@ function App() {
               <Route path="/" exact component={Welcome}/>
               <Route path="/addArticle" exact component={Article}/>
               <Route path="/listArticle" exact component={ArticleList}/>
+              <Route path="/login" exact component={Login}/>
+              <Route path="/register" exact component={Register}/>
             </Switch>
           </Col>
         </Row>

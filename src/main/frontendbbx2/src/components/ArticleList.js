@@ -25,7 +25,7 @@ export default function ArticleList() {
     return (
         <Fragment>
        <Card className={"border border-dark text-center text-black"}>
-           <Card.Header><FontAwesomeIcon icon={faList}/> ARTICLE LIST</Card.Header>
+           <Card.Header><FontAwesomeIcon icon={faList}/> Lista de Articulos </Card.Header>
            <Card.Body>
                <Table bordered hover striped variant="light">
                    <thead>
