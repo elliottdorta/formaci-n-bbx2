@@ -32,6 +32,7 @@ export default function Article() {
            idvendor: data.idvendor
         }).then(res =>{
             console.log(res.data);
+            alert("Articulo guardado")
         })
     };
 
@@ -67,10 +68,10 @@ export default function Article() {
                         <Form.Row>
                             <Form.Group as={Col}>
                                 <Form.Label>Estado del articulo</Form.Label>
-                                <Form.Control as="select"  onChange={(e)=>handle(e)} type="text" value={data.status} id="status" type="test" name="status" placeholder="Estado del articulo" >
-                                    <option value={data.status}>Active</option>
-                                    <option value={data.status}>Inactive</option>
-                                    </Form.Control>
+                                <Form.Control  as="select" defaultValue="Choose..." onChange={(e)=>handle(e)} type="text" id="status" type="test" name="status" placeholder="Estado del articulo" >
+                                    <option  value={data.status} >Active</option>
+                                    <option  value={data.status}>Inactive</option>
+                                </Form.Control>
                             </Form.Group>
                             <Form.Group as={Col}>
                                 <Form.Label>Precio</Form.Label>

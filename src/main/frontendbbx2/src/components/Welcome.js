@@ -1,9 +1,9 @@
 import React from 'react'
 import { Jumbotron } from 'react-bootstrap';
-export default function Welcome() {
-  
 
-  
+export default function Welcome() {
+
+
   return (
     <div>
       <Jumbotron className="text-black text-center ">
