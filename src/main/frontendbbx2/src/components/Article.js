@@ -1,15 +1,16 @@
-import { faPlusSquare, faSave } from '@fortawesome/free-solid-svg-icons';
+import { faList, faPlusSquare, faSave } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
-import React,  {useState}  from 'react';
+import React,  {useState, useEffect}  from 'react';
 import {Card,Form,Button,Col} from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 
 
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Article() {
 
-    const url = "http://localhost:8080/api/articles";
+    const url = "http://localhost:8080/api/articles/";
     
     const [data, setDaTa] = useState({  
         idarticle:'',
@@ -43,6 +44,31 @@ export default function Article() {
         console.log(newData);
     };
     
+    const params = useParams();
+
+    useEffect(() => {    
+        if(params.id)
+        {
+            findArticleById(params.id)
+        }
+            
+    },[])
+
+    function findArticleById(idarticle){
+        axios.get(url+idarticle)
+        .then((response) => {
+            var data = response.data;
+            setDaTa({
+            idarticle: data.idarticle,
+            description: data.description,
+            status: data.status,
+            price: data.price,
+            creator: data.creator,
+            dateup: data.dateup, 
+            idvendor: data.idvendor})
+        })
+    };
+    
 
     return (
         
@@ -52,17 +78,23 @@ export default function Article() {
                     <Form onSubmit={(e)=> submit(e)} id="articleForm">
                     <Card.Body>
                         <Form.Row>
-                            <Form.Group as={Col}>
-                                <Form.Label>Código del Articulo</Form.Label>
-                                <Form.Control required onChange={(e)=>handle(e)} type="text" id="idarticle" value={data.idarticle} name="idarticle" placeholder="Código del Articulo" />
+                            <Form.Group as={Col} >
+                                    <Form.Label>Código del Articulo</Form.Label>
+                                    <Form.Control required onChange={(e)=>handle(e)} type="text" id="idarticle" value={data.idarticle} name="idarticle" placeholder="Código del Articulo" />
                             </Form.Group>
-                            <Form.Group as={Col}>
-                                <Form.Label>Descripcion del Articulo</Form.Label>
-                                <Form.Control required onChange={(e)=>handle(e)} type="text" id="description" value={data.description} type="test" name="description"placeholder="Descripcion del Articulo" />
+                            <Form.Group>
+                                
+                                    <Form.Label>Descripcion del Articulo</Form.Label>
+                                    <Form.Control required onChange={(e)=>handle(e)} type="text" id="description" value={data.description} type="test" name="description"placeholder="Descripcion del Articulo" />
+                                
                             </Form.Group>
                             <Form.Group as={Col}>
                                 <Form.Label>Código de Proveedor</Form.Label>
                                 <Form.Control required  onChange={(e)=>handle(e)} type="text" id="idvendor" value={data.idvendor} type="test" name="idvendor" placeholder="Código de Proveedor" />
+                            </Form.Group>
+                            <Form.Group as={Col}>
+                                <Form.Label>Fecha de Creación</Form.Label>
+                                <Form.Control required onChange={(e)=>handle(e)} type="text" id="dateup" value={data.dateup} type="test" name="dateup" placeholder="Fecha creacion" />
                             </Form.Group>
                         </Form.Row>
                         <Form.Row>
@@ -85,7 +117,8 @@ export default function Article() {
                             <Card.Footer className=" text-right">
                             <Button  className="text-right" size="sm" variant="success" type="submit">
                                         Guardar <FontAwesomeIcon icon={faSave} /> 
-                                    </Button>
+                            </Button>
+                            <Button className="ml-2 text-right" size="sm" vartian="info" ><FontAwesomeIcon icon={faList}/> Lista de articulos</Button>
                             </Card.Footer>
                         </Card.Body>
                     </Form>

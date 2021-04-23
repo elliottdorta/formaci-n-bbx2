@@ -12,8 +12,8 @@ export default function NavBar() {
           </Link>
           <Nav className="mr-auto">
             <Link to={"welcome"} className="navbar-brand">Home</Link>
-            <Link to={"addArticle"} className="navbar-brand">Article</Link>
-            <Link to={"listArticle"} className="navbar-brand">ArticleList</Link>
+            <Link to={"addArticle"} className="navbar-brand">Articulo</Link>
+            <Link to={"listArticle"} className="navbar-brand">Lista de articulos</Link>
           </Nav>
         </Navbar>
     </div>

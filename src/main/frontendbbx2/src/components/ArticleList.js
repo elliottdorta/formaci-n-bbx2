@@ -1,11 +1,12 @@
 
 import React, { Fragment,useState,useEffect } from 'react';
-
+import {Link} from 'react-router-dom';
 import{ButtonGroup, Button,Card, Table} from 'react-bootstrap';
 import{FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import{faList,faTrash,faEdit} from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-import EditArticleModal from './EditArticleModal';
+import DetailArticleModal from './DetailArticleModal';
+import Article from './Article';
 
 
 export default function ArticleList() {
@@ -34,11 +35,7 @@ export default function ArticleList() {
     }
 
     const[modalShow,setModalShow] = useState(false);
-    const[currentPage,articlePage,setPage] = useState(1,3);
-    const lastIndex = currentPage * articlePage;
-    const firstIndex = lastIndex - articlePage;
-    const currentArticles = list.slice(firstIndex,lastIndex);
-    const totalPages = list.length / articlePage;
+
 
     return (
         <Fragment>
@@ -79,12 +76,11 @@ export default function ArticleList() {
                                           onClick={() => setModalShow(true)}
                                           variant="outline-primary"><FontAwesomeIcon icon={faList}/>
                                         </Button>
-                                        <EditArticleModal show={modalShow} onHide={()=> setModalShow(false)}/>
-                                        <Button 
-                                          size="sm" 
-                                          variant="outline-warning">
-                                            <FontAwesomeIcon icon={faEdit}/>
-                                          </Button> 
+                                        <DetailArticleModal show={modalShow} onHide={()=> setModalShow(false)}/>
+                                        <Link 
+                                          to={"edit/"+item.idarticle} 
+                                          className="btn btn-sm btn-outline-warning"><FontAwesomeIcon icon={faEdit}/>
+                                        </Link>{''}
                                         <Button 
                                           onClick={() => deleteArticle(item.idarticle)} 
                                           size="sm" 

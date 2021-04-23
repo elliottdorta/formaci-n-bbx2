@@ -14,7 +14,7 @@ export default function EditArticleModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Información detalada
+          Información detallada
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

@@ -7,7 +7,11 @@ import AddArticle from './components/Article';
 import ListArticle from './components/ArticleList';
 import NavBar from './components/NavBar';
 import { Container } from 'react-bootstrap';
-
+import PruebasTabla from './components/PruebasTabla';
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+/>
 
 const App = () => {
   
@@ -26,6 +30,7 @@ const App = () => {
               <Route exact path="/welcome" component={Welcome} />
               <Route exact path="/addArticle" component={AddArticle}/>
               <Route exact path="/listArticle" component={ListArticle}/>
+              <Route excat path="/edit/:id"component={AddArticle}/>
             </Switch>
           </Container>
       </div>
