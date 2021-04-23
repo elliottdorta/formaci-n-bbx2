@@ -6,7 +6,6 @@ import{FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import{faList,faTrash,faEdit} from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import DetailArticleModal from './DetailArticleModal';
-import Article from './Article';
 
 
 export default function ArticleList() {
@@ -30,6 +29,7 @@ export default function ArticleList() {
         .then(()=> {
           var result=  list.filter(e =>e.idarticle !==id);
           setList(result);
+          alert('ARTICULO BORRADO');
         })
 
     }

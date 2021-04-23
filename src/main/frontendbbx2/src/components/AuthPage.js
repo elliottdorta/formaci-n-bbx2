@@ -7,7 +7,7 @@ export default function AuthPage() {
     return (
         <div className="row justify-content-between">
             <div className="col-md-5">
-                <LoginForm/>
+                <LoginForm />
             </div>
         
             <div style={{border: '1px solid #ababab'}}></div>

@@ -24,7 +24,8 @@
     "react-scripts": "4.0.3",
     "react-tabulator": "^0.15.0",
     "react-toastify": "^7.0.3",
-    "web-vitals": "^1.1.1"
+    "web-vitals": "^1.1.1",
+    "wouter": "^2.7.4"
   },
   "scripts": {
     "start": "react-scripts start",

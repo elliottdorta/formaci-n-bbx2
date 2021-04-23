@@ -1,9 +1,9 @@
-import { faList, faPlusSquare, faSave } from '@fortawesome/free-solid-svg-icons';
+import { faPlusSquare, faSave } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import React,  {useState, useEffect}  from 'react';
 import {Card,Form,Button,Col} from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { useParams,useHistory } from 'react-router-dom';
 
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -45,7 +45,6 @@ export default function Article() {
     };
     
     const params = useParams();
-
     useEffect(() => {    
         if(params.id)
         {
@@ -69,6 +68,11 @@ export default function Article() {
         })
     };
     
+    let history = useHistory();
+
+    function handleClick() {
+      history.push("/listArticle");
+    }
 
     return (
         
@@ -116,9 +120,12 @@ export default function Article() {
                         </Form.Row>
                             <Card.Footer className=" text-right">
                             <Button  className="text-right" size="sm" variant="success" type="submit">
-                                        Guardar <FontAwesomeIcon icon={faSave} /> 
+                                         <FontAwesomeIcon icon={faSave} /> Guardar
+                                         
                             </Button>
-                            <Button className="ml-2 text-right" size="sm" vartian="info" ><FontAwesomeIcon icon={faList}/> Lista de articulos</Button>
+
+                            <Button size="sm" className="ml-2" variant="info" type="button" onClick={handleClick}> Lista de articulos </Button>
+                            
                             </Card.Footer>
                         </Card.Body>
                     </Form>
